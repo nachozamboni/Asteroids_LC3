@@ -6,7 +6,7 @@ Podés mover tu nave en las cuatro direcciones (arriba, abajo, izquierda y derec
 Solo vertical y horizontalmente. La nave no podrá ir mas allá de los limites del "mapa" y la velocidad 
 de la nave será constante durante todo el juego. 
 La nave está equipada con un cañón que apunta siempre hacia donde la nave se está dirigiendo. 
-Un solo disparo basta para destruir cada asteroide. La nave será de color rojo.
+Un solo disparo basta para destruir cada asteroide. La nave será de color blanco.
 
 El jugador tendrá una sola vida, y al colisionar con un asteroide (Grande o chico) perderá y terminará el juego.
 
@@ -14,8 +14,8 @@ Habrá dos tipos de asteroides, uno grande y uno pequeño.
 Ambos tipos de asteroides podrán aparecer en la pantalla para que el jugador deba eliminarlos.
 Los asteroides grandes al ser destruidos serán divididos en dos pequeños, y los pequeños al ser destruidos desapareceran de la pantalla. 
 Los asteroides solo se moveran horizontal o verticalmente y seguirán su trayectoria hasta que se salgan de la pantalla.
-Asteroide grande: Cuadrado de 8x8 píxeles.
-Asteroide chico: Cuadrado de 4x4 píxeles.
+Asteroide grande: Cuadrado de 8x8 píxeles. color Rojo
+Asteroide chico: Cuadrado de 4x4 píxeles. color Gris
 
 La velocidad de los asteroides aumentará con el paso del tiempo, lo que aumentará la dificultad del juego.
 
@@ -34,28 +34,9 @@ D           (Mover la nave hacia la derecha)
 A           (Mover la nave hacia la izquierda)
 Espacio     (Disparar una bala)
 
-Este dibujo es una una idea básica de cómo se verá el juego en pantalla, con los elementos principales diferenciados y el espacio definido.
+![image](https://github.com/user-attachments/assets/c01479c6-e9b1-46be-9ea1-ef16f7957413)
 
-+--------------------------------------------------+
-|                                                  |
-|                    .    .                        |
-|               .       *      .                   |
-|                                                  |
-|          *                    *                  |
-|                 ^                                |
-|          .                                     . |
-|                                                  |
-|                   o        .                     |
-|                                                  |
-|        .                                         |
-|                                        o         |
-|           .             *                        |
-|                                                  |
-|                           .                      |
-|                                                  |
-+--------------------------------------------------+
+![image](https://github.com/user-attachments/assets/6a6e1e3c-251a-4505-b796-1d7ee8e68995)
 
-+--------------------------------------------------+ 
-Representa el borde de la pantalla. 
-El símbolo ^ representa la nave espacial, apuntando hacia arriba. 
-Los asteroides están representados por o o *, con diferentes tamaños para indicar asteroides grandes y pequeños.
+![image](https://github.com/user-attachments/assets/df36aa40-98f5-404d-b360-5ac86aa450fc)
+
