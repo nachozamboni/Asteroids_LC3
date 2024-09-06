@@ -21,7 +21,7 @@ DRAW_SQUARE
     STR R1, R0, #0         ; Dibujar/borrar el segundo píxel
     ADD R0, R0, #1         ; Mover a la derecha
     STR R1, R0, #0         ; Dibujar/borrar el tercer píxel
-    ADD R0, R0, #1         ; Dibujar/borrar el cuarto píxel
+    ADD R0, R0, #1         ; Mover a la derecha
 
     ; Mover una fila hacia abajo (volver 4 píxeles atrás y sumar el ancho de la pantalla)
     ADD R0, R0, #-3        ; Volver a la primera columna de la fila actual
@@ -47,13 +47,21 @@ MOVE_SQUARE
 
     ; Mover el cuadrado en función de la tecla presionada
     LD R7, up_key          ; Cargar la tecla 'W'
+    ADD R7, R7, R0
     BRz MOVE_UP
+
     LD R7, down_key        ; Cargar la tecla 'S'
+    ADD R7, R7, R0
     BRz MOVE_DOWN
+
     LD R7, left_key        ; Cargar la tecla 'A'
+    ADD R7, R7, R0
     BRz MOVE_LEFT
+
     LD R7, right_key       ; Cargar la tecla 'D'
+    ADD R7, R7, R0
     BRz MOVE_RIGHT
+
     RET                    ; Si no es una tecla de movimiento, regresar
 
 MOVE_UP
