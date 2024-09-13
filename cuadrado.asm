@@ -8,7 +8,8 @@
     STR R0, R5, #0         ; Guardar la posición inicial del cuadrado
 
 MAIN_LOOP
-    LDR R0, R5, #0         ; Cargar la posición actual
+    ST R5, last_pos
+    LD R0, last_pos     ; Cargar la posición actual
     JSR DRAW_SQUARE        ; Dibujar el cuadrado en la posición actual
     JSR READ_INPUT         ; Leer la entrada del teclado
     JSR MOVE_SQUARE        ; Mover el cuadrado basado en la entrada
@@ -33,19 +34,20 @@ DRAW_SQUARE
     RET                    ; Regresar al bucle principal
 
 READ_INPUT
-    GETC                   ; Leer una tecla del teclado
-    ST R0, KBD_BUF         ; Guardar la tecla en el buffer
+    LDI R0, KBD_BUF         ; Guardar la tecla en el buffer
     RET                    ; Retornar
 
 MOVE_SQUARE
-    LD R0, KBD_BUF         ; Cargar la tecla presionada
+    ST R7, return_address
     LDR R1, R5, #0         ; Cargar la posición actual del cuadrado
 
     ; Borrar el cuadrado en la posición actual antes de moverlo
+    ST R0, last_key
     LD R1, negro
     JSR DRAW_SQUARE
-
+    LD R0, last_key
     ; Mover el cuadrado en función de la tecla presionada
+
     LD R7, up_key          ; Cargar la tecla 'W'
     ADD R7, R7, R0
     BRz MOVE_UP
@@ -62,6 +64,7 @@ MOVE_SQUARE
     ADD R7, R7, R0
     BRz MOVE_RIGHT
 
+    LD R7, return_address
     RET                    ; Si no es una tecla de movimiento, regresar
 
 MOVE_UP
@@ -86,6 +89,7 @@ MOVE_END
     STR R1, R5, #0          ; Guardar la nueva posición del cuadrado
     LD R1, white            ; Cargar el color blanco para dibujar el cuadrado
     JSR DRAW_SQUARE         ; Dibujar el cuadrado en la nueva posición
+    LD R7, return_address
     RET                     ; Regresar al bucle principal
 
 ; Constantes y datos
@@ -95,10 +99,13 @@ center_pos .FILL xE03C      ; Posición inicial en el centro de la pantalla
 row_width .FILL #128        ; Ancho de la pantalla (128 píxeles)
 neg_row_width .FILL #-128   ; Valor negativo del ancho de la pantalla para mover hacia arriba
 square_size .FILL #4        ; Tamaño del cuadrado (4 filas)
-up_key .FILL x77            ; Tecla 'W' para subir
-down_key .FILL x73          ; Tecla 'S' para bajar
-left_key .FILL x61          ; Tecla 'A' para mover a la izquierda
-right_key .FILL x64         ; Tecla 'D' para mover a la derecha
-KBD_BUF .BLKW 1             ; Buffer para almacenar la tecla presionada
+up_key .FILL #-119            ; Tecla 'W' para subir
+down_key .FILL #-115          ; Tecla 'S' para bajar
+left_key .FILL #-97          ; Tecla 'A' para mover a la izquierda
+right_key .FILL #-100         ; Tecla 'D' para mover a la derecha
+KBD_BUF .FILL xFE02             ; Buffer para almacenar la tecla presionada
 current_pos .BLKW 1         ; Posición actual del cuadrado
+return_address .FILL xFFFF
+last_key .FILL xFFFF
+last_pos .FILL xFFFF
 .END
