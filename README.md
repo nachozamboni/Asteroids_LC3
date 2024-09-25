@@ -17,10 +17,7 @@ Los asteroides solo se moveran horizontal o verticalmente y seguirán su trayect
 Asteroide grande: Cuadrado de 8x8 píxeles. color Rojo
 Asteroide chico: Cuadrado de 4x4 píxeles. color Gris
 
-La velocidad de los asteroides aumentará con el paso del tiempo, lo que aumentará la dificultad del juego.
-
 Ganas puntos cada vez que destruyes un asteroide. Los asteroides más grandes valen más puntos, pero también son más peligrosos porque crean más fragmentos. 
-Cada 1000 puntos la nave se ilumanará de color azul durante X tiempo para indicar la puntuación. 
 
 Una vez que el juego empieza, no hay botón de pausa.
 Dado que está programado en LC3, los gráficos serán bastante básicos. 
