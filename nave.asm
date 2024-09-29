@@ -1,4 +1,4 @@
-.ORIG x3000    
+d.ORIG x3000    
 
 LD R0, COLOR_NEGRO 
 LD R1, PANTALLA_INICIO 
@@ -13,16 +13,18 @@ ADD R3, R3, #-1
 BRp FONDO
 
 LD R6, POSICION_INICIAL
-JSR DRAW_NAVE               ; Dibujar nave en posicion incial
+JSR DRAW_NAVE               ; Dibujar nave en posicion incial (hacia arriba)
 
 MAIN_LOOP
     JSR READ_INPUT         ; Leer la entrada del teclado
-    JSR BORRAR_NAVE
     JSR MOVE_NAVE
     JSR DRAW_NAVE
     BR MAIN_LOOP           ; Repetir el bucle principal
 
 MOVE_NAVE
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1        ; Ajustar el puntero de pila
+
     LD R3, up_key          ; Cargar la tecla 'W'
     ADD R3, R3, R0
     BRz MOVE_UP
@@ -39,28 +41,61 @@ MOVE_NAVE
     ADD R3, R3, R0
     BRz MOVE_RIGHT
 
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
+
     RET                    ; Si no es una tecla de movimiento, regresar
 
 MOVE_UP
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1        ; Ajustar el puntero de pila
+
     LD R5, VALUE2
+    ADD R1, R6, R5
     ADD R6, R6, R5
+    JSR BORRAR_NAVE
+
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
     RET
 
 MOVE_DOWN
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1        ; Ajustar el puntero de pila
+
     LD R5, VALUE
     ADD R6, R6, R5
+    JSR BORRAR_NAVE
+
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
     RET
 
 MOVE_LEFT
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1        ; Ajustar el puntero de pila
+
     ADD R6, R6, #-1
+    JSR BORRAR_NAVE
+
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
     RET
 
 MOVE_RIGHT
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1        ; Ajustar el puntero de pila
+
     ADD R6, R6, #1
+    JSR BORRAR_NAVE
+
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
     RET
 
 READ_INPUT
-    LDI R0, KBD_BUF        ; Guardar la tecla en el buffer
+    ;LDR R0, KBD_BUF, #0
+    LDI R0, KBD_BUF       ; Guardar la tecla en el buffer
     RET                    ; Retornar
 
 DRAW_NAVE
