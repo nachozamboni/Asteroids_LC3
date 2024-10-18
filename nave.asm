@@ -19,6 +19,7 @@ MAIN_LOOP
     JSR READ_INPUT         ; Leer la entrada del teclado
     JSR MOVE_NAVE
     JSR DRAW_NAVE
+    AND R0, R0, #0
     BR MAIN_LOOP           ; Repetir el bucle principal
 
 MOVE_NAVE
@@ -43,7 +44,7 @@ MOVE_NAVE
 
     ADD R4, R4, #1         ; Restaurar el puntero de pila
     LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
-
+    
     RET                    ; Si no es una tecla de movimiento, regresar
 
 MOVE_UP
@@ -95,7 +96,11 @@ MOVE_RIGHT
 
 READ_INPUT
     ;LDR R0, KBD_BUF, #0
+    LDI R0, KBD_IS_READ
+    ADD R0, R0, #0
+    BRz EXIT_INPUT
     LDI R0, KBD_BUF       ; Guardar la tecla en el buffer
+EXIT_INPUT
     RET                    ; Retornar
 
 DRAW_NAVE
@@ -198,5 +203,5 @@ down_key .FILL #-115          ; Tecla 'S' para bajar
 left_key .FILL #-97          ; Tecla 'A' para mover a la izquierda
 right_key .FILL #-100         ; Tecla 'D' para mover a la derecha
 KBD_BUF .FILL xFE02             ; Buffer para almacenar la tecla presionada
-
+KBD_IS_READ .FILL xFE00
 .END
