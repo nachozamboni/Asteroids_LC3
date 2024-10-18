@@ -1,4 +1,4 @@
-d.ORIG x3000    
+.ORIG x3000    
 
 LD R0, COLOR_NEGRO 
 LD R1, PANTALLA_INICIO 
@@ -148,43 +148,167 @@ DRAW_NAVE
 
 BORRAR_NAVE
     ADD R1, R6, #0          ; Esto es para no modificar la posicion real de la nave al dibujarla
-    LD R2, COLOR_NEGRO     ; (La posicion de la nave siempre está en R1)
+    LD R2, COLOR_NEGRO      ; (La posicion de la nave siempre está en R1)
     LD R5, VALUE2
+
+    ADD R1, R1, R5
+    ADD R1, R1, R5
+    ADD R1, R1, R5
+    ADD R1, R1, R5
+    ADD R1, R1, R5
+
     STR R2, R1, #0
     STR R2, R1, #1
-    STR R2, R1, #-1
     STR R2, R1, #2
     STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
     STR R2, R1, #-2
     STR R2, R1, #-3
-    ADD R1, R1, R5
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    ADD R1, R1, R5
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #-1
-    ADD R1, R1, R5
-    STR R2, R1, #0
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
     LD R5, VALUE
     ADD R1, R1, R5
-    ADD R1, R1, R5
-    ADD R1, R1, R5
-    ADD R1, R1, R5
+
     STR R2, R1, #0
     STR R2, R1, #1
     STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
     STR R2, R1, #-1
     STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
     ADD R1, R1, R5
+
     STR R2, R1, #0
     STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
     STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
     ADD R1, R1, R5
+
     STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
+
+    ADD R1, R1, R5
+
+    STR R2, R1, #0
+    STR R2, R1, #1
+    STR R2, R1, #2
+    STR R2, R1, #3
+    STR R2, R1, #4
+    STR R2, R1, #5
+    STR R2, R1, #-1
+    STR R2, R1, #-2
+    STR R2, R1, #-3
+    STR R2, R1, #-4
+    STR R2, R1, #-5
 
     RET
 
@@ -200,8 +324,8 @@ VALUE             .FILL #128
 VALUE2            .FILL #-128
 up_key .FILL #-119            ; Tecla 'W' para subir
 down_key .FILL #-115          ; Tecla 'S' para bajar
-left_key .FILL #-97          ; Tecla 'A' para mover a la izquierda
+left_key .FILL #-97           ; Tecla 'A' para mover a la izquierda
 right_key .FILL #-100         ; Tecla 'D' para mover a la derecha
-KBD_BUF .FILL xFE02             ; Buffer para almacenar la tecla presionada
+KBD_BUF .FILL xFE02           ; Buffer para almacenar la tecla presionada
 KBD_IS_READ .FILL xFE00
 .END
