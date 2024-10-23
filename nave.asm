@@ -71,12 +71,26 @@ SHOOT
     LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
     RET
 
+DELAY
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1        ; Ajustar el puntero de pila
+    
+    LD R1, delay
+    
+    DELAY_LOOP
+    ADD R1, R1, #-1
+    BRp DELAY_LOOP
+
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
+    RET
+
 MOVE_UP
     STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
     ADD R4, R4, #-1        ; Ajustar el puntero de pila
 
     LD R5, VALUE2
-    ADD R1, R6, R5
+    ;ADD R1, R6, R5
     ADD R6, R6, R5
     JSR BORRAR_NAVE
 
@@ -352,4 +366,5 @@ left_key          .FILL #-97                    ; Tecla 'a' para mover a la izqu
 right_key         .FILL #-100                   ; Tecla 'd' para mover a la derecha
 KBD_BUF           .FILL xFE02                   ; Buffer para almacenar la tecla presionada
 KBD_IS_READ       .FILL xFE00
+delay             .FILL #5000
 .END
