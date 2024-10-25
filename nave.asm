@@ -80,7 +80,7 @@ SHOOT_RIGHT
     LD R3, CONTADOR        ; Cargar el contador en R3 (255 disparos)
     ADD R2, R6, #0         ; Copiar la posición inicial desde R6 a R2
 
-LOOP 
+LOOP1 
     BRz END_LOOP           ; Si R3 es 0, salir del bucle
 
     STR R1, R2, #0         ; Pintar el pixel blanco en la posición R2 (bala actual)    
@@ -88,12 +88,7 @@ LOOP
     ADD R2, R2, #1         ; Mover la bala hacia la derecha (incrementar posición)
 
     ADD R3, R3, #-1        ; Decrementar el contador
-    BR LOOP                ; Saltar al inicio del bucle
-
-END_LOOP
-    ADD R4, R4, #1         ; Restaurar el puntero de pila
-    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
-    RET
+    BR LOOP1                ; Saltar al inicio del bucle
 
 SHOOT_LEFT
     STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
@@ -104,7 +99,7 @@ SHOOT_LEFT
     LD R3, CONTADOR        ; Cargar el contador en R3 (255 disparos)
     ADD R2, R6, #0         ; Copiar la posición inicial desde R6 a R2
 
-LOOP 
+LOOP2
     BRz END_LOOP           ; Si R3 es 0, salir del bucle
 
     STR R1, R2, #0         ; Pintar el pixel blanco en la posición R2 (bala actual)    
@@ -112,12 +107,7 @@ LOOP
     ADD R2, R2, #-1         ; Mover la bala hacia la izquierda (incrementar posición)
     
     ADD R3, R3, #-1        ; Decrementar el contador
-    BR LOOP                ; Saltar al inicio del bucle
-
-END_LOOP
-    ADD R4, R4, #1         ; Restaurar el puntero de pila
-    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
-    RET
+    BR LOOP2                ; Saltar al inicio del bucle
 
 SHOOT_UP
     STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
@@ -129,7 +119,7 @@ SHOOT_UP
     LD R0, VALUE2
     ADD R2, R6, #0         ; Copiar la posición inicial desde R6 a R2
 
-LOOP 
+LOOP3 
     BRz END_LOOP           ; Si R3 es 0, salir del bucle
 
     STR R5, R0, #0         ; Pintar el pixel anterior de negro (borrar)
@@ -137,14 +127,9 @@ LOOP
     STR R1, R2, #0         ; Pintar el pixel blanco en la posición R2 (bala actual)
 
     ADD R3, R3, #-1        ; Decrementar el contador
-    BR LOOP                ; Saltar al inicio del bucle
+    BR LOOP3                ; Saltar al inicio del bucle
 
-END_LOOP
-    ADD R4, R4, #1         ; Restaurar el puntero de pila
-    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
-    RET
-
-SHOOT_UP
+SHOOT_DOWN
     STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
     ADD R4, R4, #-1        ; Ajustar el puntero de pila
 
@@ -154,7 +139,7 @@ SHOOT_UP
     LD R0, VALUE
     ADD R2, R6, #0         ; Copiar la posición inicial desde R6 a R2
 
-LOOP 
+LOOP4 
     BRz END_LOOP           ; Si R3 es 0, salir del bucle
 
     STR R5, R0, #0         ; Pintar el pixel anterior de negro (borrar)
@@ -162,7 +147,7 @@ LOOP
     STR R1, R2, #0         ; Pintar el pixel blanco en la posición R2 (bala actual)
 
     ADD R3, R3, #-1        ; Decrementar el contador
-    BR LOOP                ; Saltar al inicio del bucle
+    BR LOOP4                ; Saltar al inicio del bucle
 
 END_LOOP
     ADD R4, R4, #1         ; Restaurar el puntero de pila
@@ -465,5 +450,5 @@ right_key         .FILL #-100                   ; Tecla 'd' para mover a la dere
 KBD_BUF           .FILL xFE02                   ; Buffer para almacenar la tecla presionada
 KBD_IS_READ       .FILL xFE00
 delay             .FILL #5000
-CONTADOR          .FILL #255
+CONTADOR          .FILL #254
 .END
