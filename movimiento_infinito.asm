@@ -1,0 +1,227 @@
+.ORIG x3000
+
+;CARGAR_LIMITE_INI
+LD R2, ASTEROIDE_INI
+ST R2, LIMITE_INI
+
+;CARGAR_LIMITE_FIN
+LD R2, ASTEROIDE_FIN
+ST R2, LIMITE_FIN
+
+
+LD R0, ASTEROIDE_INI
+ASTEROIDE_LOOP
+	AND R3, R3, #0
+	ADD R3, R3, #1
+	JSR BORRAR_ASTEROIDE
+	Y_LOOP
+		LD R2, ANCHO_PANTALLA
+		ADD R0, R0, R2
+		ADD R3, R3, #-1
+		BRp Y_LOOP
+	AND R3, R3, #0
+	ADD R3, R3, #1
+	X_LOOP 
+		LD R2, DESP_ESTE
+		ADD R0, R0, R2
+		ADD R3, R3, #-1
+		BRp X_LOOP
+	JSR DIBUJAR_ASTEROIDE
+	JSR WAIT
+	;-------------
+	LD R5, LIMITE_FIN
+	NOT R5, R5
+	ADD R5, R5, #1
+	ADD R6, R5, R0
+	BRz AST_LOOP_INV_SUB
+	BR ASTEROIDE_LOOP
+
+
+
+ASTEROIDE_LOOP_INV
+	AND R3, R3, #0
+	ADD R3, R3, #1
+	JSR BORRAR_ASTEROIDE
+	Y_LOOP_
+		LD R2, ANCHO_PANTALLA_N
+		ADD R0, R0, R2
+		ADD R3, R3, #-1
+		BRp Y_LOOP_
+	AND R3, R3, #0
+	ADD R3, R3, #1
+	X_LOOP_ 
+		LD R2, DESP_ESTE_N
+		ADD R0, R0, R2
+		ADD R3, R3, #-1
+		BRp X_LOOP_
+	JSR DIBUJAR_ASTEROIDE
+	JSR WAIT
+	;----------------
+	LD R5, LIMITE_INI
+	NOT R5, R5
+	ADD R5, R5, #1
+	ADD R6, R5, R0
+	BRz AST_LOOP_SUB
+	BR ASTEROIDE_LOOP_INV
+
+AST_LOOP_INV_SUB
+	JSR BORRAR_ASTEROIDE
+	JSR WAIT
+	JSR ASTEROIDE_LOOP_INV
+	RET
+
+AST_LOOP_SUB
+	JSR BORRAR_ASTEROIDE
+	JSR WAIT
+	JSR ASTEROIDE_LOOP
+	RET
+
+DIBUJAR_ASTEROIDE ; Pinta el asteroide desde la posicion guardada en R0
+	ST R0, GUARDAR_R0
+	LD R1, ROJO
+	LD R2, ANCHO_PANTALLA
+	STR R1, R0, #3
+	STR R1, R0, #4
+	STR R1, R0, #5
+	STR R1, R0, #6
+	STR R1, R0, #7
+	STR R1, R0, #8
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #2
+	STR R1, R0, #8
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #2
+	STR R1, R0, #9
+	STR R1, R0, #10
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #1
+	STR R1, R0, #2
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	STR R1, R0, #10
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #1
+	STR R1, R0, #2
+	STR R1, R0, #8
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #3
+	STR R1, R0, #4
+	STR R1, R0, #5
+	STR R1, R0, #6
+	STR R1, R0, #7
+	ADD R0, R0, R2 ; salto de linea
+	LD R0, GUARDAR_R0
+	RET 
+
+WAIT
+    LD R6, DELAY
+	WAIT_LOOP
+		ADD R6, R6, #-1
+		BRp WAIT_LOOP
+	RET
+
+BORRAR_ASTEROIDE
+	ST R0, GUARDAR_R0
+	LD R1, BLACK
+	LD R2, ANCHO_PANTALLA
+	STR R1, R0, #3
+	STR R1, R0, #4
+	STR R1, R0, #5
+	STR R1, R0, #6
+	STR R1, R0, #7
+	STR R1, R0, #8
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #2
+	STR R1, R0, #8
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #2
+	STR R1, R0, #9
+	STR R1, R0, #10
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #1
+	STR R1, R0, #2
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	STR R1, R0, #10
+	STR R1, R0, #11
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #0
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #1
+	STR R1, R0, #2
+	STR R1, R0, #8
+	STR R1, R0, #9
+	ADD R0, R0, R2 ; salto de linea
+	STR R1, R0, #3
+	STR R1, R0, #4
+	STR R1, R0, #5
+	STR R1, R0, #6
+	STR R1, R0, #7
+	ADD R0, R0, R2 ; salto de linea
+	LD R0, GUARDAR_R0
+	RET
+
+
+
+
+HALT
+
+GUARDAR_R0		.BLKW 1
+LIMITE_INI		.BLKW 1
+LIMITE_FIN		.BLKW 1
+
+cien 				.FILL #105
+AUX					.FILL x0216
+ASTEROIDE_INI		.FILL xC900
+ASTEROIDE_FIN		.FILL xFDE9
+ANCHO_PANTALLA		.FILL #128 
+ANCHO_PANTALLA_N	.FILL #-128 
+
+ROJO 				.FILL x7C00
+BLACK 				.FILL x0000
+DELAY 				.FILL #15000
+DESP_ESTE			.FILL #1
+DESP_ESTE_N			.FILL #-1
+RESULTADO 			.FILL #0
+.END
+; xC000 A xFDFF
