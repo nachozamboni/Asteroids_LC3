@@ -26,6 +26,7 @@ Nicolás Casadidio:
 * Logica del movimiento y disparo (4 direcciones)
 * Dibujo de la nave 
 (Basicamente todo el nave.asm)
+Encargado de los Pixel Art 
 
 
 Antonio Giro: 
