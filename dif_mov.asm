@@ -9,29 +9,18 @@ CARGAR_ARRAY_AST   ; cargo en R4 las direcciones de todos los ASTEROIDES
 	LD R4, ASTEROIDES; ARRAY coordenadas posicion ASTEROIDES
 	LD R5, ASTEROIDE_1
 	STR R5, R4, #0
-    LD R4, ASTEROIDE_INI
-    STR R5, R4, #0
     ;---------
 	LD R5, ASTEROIDE_2
 	ADD R4, R4, #1
 	STR R5, R4, #0
-    LD R4, ASTEROIDES_INI
-    ADD R4, R4, #1
-    STR R5, R4, #0
     ;---------
 	LD R5, ASTEROIDE_3
 	ADD R4, R4, #1
 	STR R5, R4, #0
-    LD R4, ASTEROIDE_INI
-    ADD R4, R4, #1
-    STR R5, R4, #0
     ;---------
 	LD R5, ASTEROIDE_4
 	ADD R4, R4, #1
 	STR R5, R4, #0
-    LD R4, ASTEROIDE_INI
-    ADD R4, R4, #1
-    STR R5, R4, #0
 	;ADD R4, R4, #-2  ; suma para ir al inicio del ARRAY
 
 CARGAR_MOV_AST_X
@@ -69,9 +58,6 @@ CARGAR_MOV_AST_Y
 
 LD R5, CANT_ITERACIONES
 
-LD R2, ROJO
-LD R4, ASTEROIDE_INI
-STR R2, R4, #0
 
 MAIN_LOOP
 	LD R1, CANT_ASTEROIDES
