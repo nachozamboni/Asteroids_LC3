@@ -1,6 +1,6 @@
 Listado de tareas Individual:
 
-Ignacio Zamboni: Líder del Grupo, encargado de la división y coordinación de tareas individuales a lo largo de todo el juego. Además llevó a cabo el seguimiento semanal en clase de que las tareas se fueran entregando en tiempo y forma.
+Ignacio Zamboni: Líder del Grupo, encargado de la división y coordinación de tareas individuales a lo largo de todo el juego. Además llevó a cabo el seguimiento semanal en clase de que las tareas se fueran entregando en tiempo y forma.Ademas de me encargue de escribir todo el Readme, con la descripcion del juego.
 
 Fiorela Tulio:
 meteorito.asm
