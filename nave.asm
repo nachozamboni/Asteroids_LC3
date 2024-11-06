@@ -43,7 +43,7 @@ ANALIZAR_TECLA
 
     LD R3, shoot_key       ; Cargar la tecla 'r'
     ADD R3, R3, R0
-    BRz SHOOT
+    BRz SHOOT              ; EN ESTA VERSION DE NAVE.ASM ESTÁ HECHA LA LÓGICA DE DISPARO PERO NO COMPILA
 
     RET                    ; Si no es una tecla de movimiento, regresar
 
