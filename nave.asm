@@ -267,172 +267,36 @@ DRAW_NAVE
     RET
 
 BORRAR_NAVE
-    ADD R1, R6, #0          ; Esto es para no modificar la posicion real de la nave al dibujarla
-    LD R2, COLOR_NEGRO      ; (La posicion de la nave siempre está en R1)
-    LD R5, VALUE2
 
-    ADD R1, R1, R5
-    ADD R1, R1, R5
-    ADD R1, R1, R5
-    ADD R1, R1, R5
-    ADD R1, R1, R5
+    STR R7, R4, #-1        ; Guardar R7 en la pila (R6 es el puntero de pila)
+    ADD R4, R4, #-1
 
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
+    ADD R1, R6, #0          ; Copiar la posición de la nave en R1 para no modificarla
+    LD R2, COLOR_NEGRO      ; Cargar el color negro en R2
+    LD R5, VALUE2           ; Cargar el valor para avanzar a la siguiente fila en R5
 
-    LD R5, VALUE
-    ADD R1, R1, R5
+    LD R3, NUM_FILAS        ; Número de filas de la nave
+FILAS_LOOP
+    LD R0, NUM_COLUMNAS     ; Número de columnas de la nave
+COLUMNAS_LOOP
+    STR R2, R1, #0          ; Pintar el píxel actual de negro
+    ADD R1, R1, #1          ; Moverse a la siguiente columna (siguiente píxel horizontal)
+    ADD R0, R0, #-1         ; Decrementar el contador de columnas
+    BRp COLUMNAS_LOOP       ; Si hay más columnas, repetir el bucle de columnas
 
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
+    ; Fin de la fila actual, volver al inicio de la siguiente fila
+    ADD R1, R1, R5          ; Mover R1 a la siguiente fila
+    ADD R3, R3, #-1         ; Decrementar el contador de filas
+    BRp FILAS_LOOP          ; Si hay más filas, repetir el bucle de filas
 
-    ADD R1, R1, R5
+    ADD R4, R4, #1         ; Restaurar el puntero de pila
+    LDR R7, R4, #-1        ; Recuperar el valor de R7 desde la pila
 
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    ADD R1, R1, R5
-
-    STR R2, R1, #0
-    STR R2, R1, #1
-    STR R2, R1, #2
-    STR R2, R1, #3
-    STR R2, R1, #4
-    STR R2, R1, #5
-    STR R2, R1, #-1
-    STR R2, R1, #-2
-    STR R2, R1, #-3
-    STR R2, R1, #-4
-    STR R2, R1, #-5
-
-    RET
+    RET                      ; Retornar
 
 ; Constantes
+NUM_FILAS .FILL 10          
+NUM_COLUMNAS .FILL 10       
 COLOR_NEGRO       .FILL x0000
 COLOR_BLANCO      .FILL x7FFF
 COLOR_AZUL        .FILL x001F
@@ -451,4 +315,5 @@ KBD_BUF           .FILL xFE02                   ; Buffer para almacenar la tecla
 KBD_IS_READ       .FILL xFE00
 delay             .FILL #5000
 CONTADOR          .FILL #254
+BACKUP            .FILL x3500
 .END
