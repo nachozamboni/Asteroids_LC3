@@ -4,7 +4,7 @@ Cosas que fueron modificadas a lo largo del juego:
 
 2. Solamente vamos a tener meteoritos grandes, al ser destruidos no se van a dividir en 2 pequeños.
 
-3. La nave en lugar de tener 4 posiciones, tiene 4 cañones que disparan segun la direccion de movimiento.
+3. La nave en lugar de tener 4 posiciones y un solo cañon, tiene 4 cañones que disparan segun la direccion de movimiento.
 
 
 Tareas pendientes para finalizar el juego: 
@@ -13,4 +13,4 @@ Tareas pendientes para finalizar el juego:
 
 2. Integrar codigo de la nave en el archivo de los meteoritos.
 
-3. Que las balas destruyan un meteorito.
+3. Que las balas destruyan los meteoritos. 
