@@ -1,16 +1,15 @@
 Cosas que fueron modificadas a lo largo del juego:
 
-1. Finalmente son 4 meteoritos grandes en pantalla con recorridos definidos.
+Finalmente son 4 meteoritos grandes en pantalla con recorridos definidos.
 
-2. Solamente vamos a tener meteoritos grandes, al ser destruidos no se van a dividir en 2 pequeños.
+Solamente vamos a tener meteoritos grandes, al ser destruidos no se van a dividir en 2 pequeños, sino que directamente van a desaparecer al ser alcanzados por una bala.
 
-3. La nave en lugar de tener 4 posiciones y un solo cañon, tiene 4 cañones que disparan segun la direccion de movimiento.
+La nave en lugar de tener 4 posiciones y un solo cañón, tiene 4 cañones que dispararan según la dirección de movimiento.
 
+Tareas pendientes para finalizar el juego:
 
-Tareas pendientes para finalizar el juego: 
+Se deberá corregir mecánica de disparo para la nave y lograr que funcione correctamente.
 
-1. Corregir mecanica de disparo para la nave.
+Integrar el código de la nave en el archivo de los meteoritos, para que todo se encuentre en uno solo.
 
-2. Integrar codigo de la nave en el archivo de los meteoritos.
-
-3. Que las balas destruyan los meteoritos. 
+Que las balas destruyan los meteoritos cuando logren alcanzarlos. Programar Hitbox para detectar que la bala alcanzo correctamente al meteorito.
